@@ -3,6 +3,13 @@ package com.br.marceneiro.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.marceneiro.api.controllers.interfaces.IProdutoController;
@@ -11,39 +18,40 @@ import com.br.marceneiro.api.services.ProdutoService;
 
 @CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/produtos")
 public class ProdutoController implements IProdutoController {
 
     @Autowired
     ProdutoService service;
 
     @Override
-    public ResponseEntity<?> cadastrarProduto(Produto produto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cadastrarProduto'");
+    @PostMapping
+    public ResponseEntity<?> cadastrarProduto(@RequestBody Produto produto) {
+        return service.cadastrarProduto(produto);
     }
-
+    
     @Override
-    public ResponseEntity<?> alterarProduto(Produto produto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'alterarProduto'");
+    @PutMapping
+    public ResponseEntity<?> alterarProduto(@RequestBody Produto produto) {
+       return service.alterarProduto(produto);
     }
-
+    
     @Override
+    @GetMapping
     public ResponseEntity<?> listarProdutos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarProdutos'");
+        return service.listarProdutos();
     }
 
     @Override
-    public ResponseEntity<?> selecionarioPorId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selecionarioPorId'");
+    @GetMapping("{id}")
+    public ResponseEntity<?> selecionarioPorId(@PathVariable Long id) {
+        return service.listarPorId(id);
     }
 
     @Override
-    public ResponseEntity<?> deletarProduto(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarProduto'");
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deletarProduto(@PathVariable Long id) {
+        return service.deletarProduto(id);
     }
     
 }

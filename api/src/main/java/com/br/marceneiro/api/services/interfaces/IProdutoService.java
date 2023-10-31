@@ -9,5 +9,5 @@ public interface IProdutoService {
     ResponseEntity<?> alterarProduto(Produto produto);
     ResponseEntity<?> listarProdutos();
     ResponseEntity<?> deletarProduto(Long obj);
-    ResponseEntity<?> ListarPorId(Long id);
+    ResponseEntity<?> listarPorId(Long id);
 }

@@ -20,13 +20,46 @@ public class ProdutoService implements IProdutoService {
 
     @Override
     public ResponseEntity<?> cadastrarProduto(Produto produto) {
+        if (produto.getNome() == null || produto.getNome().isEmpty()) {
+            retorno.setMensagem("Insira um nome ao produto.");
+            return ResponseEntity.badRequest().body(retorno);
+        }
+        if (produto.getPrecoMetroCubicos() == null || produto.getPrecoMetroCubicos().isNaN()) {
+            retorno.setMensagem("Insira o preço por metro cúbico do produto.");
+            return ResponseEntity.badRequest().body(retorno);
+        }
+        if (produto.getQuantidadePregos() == null || produto.getQuantidadePregos() < 0) {
+            retorno.setMensagem("Insira a quantidade de pregos do produto.");
+            return ResponseEntity.badRequest().body(retorno);
+        }
+
         return new ResponseEntity<>(repository.save(produto), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<?> alterarProduto(Produto produto) {
-        cadastrarProduto(produto);
-        return new ResponseEntity<>(HttpStatus.OK);
+        if (produto.getId() == null) {
+            retorno.setMensagem("ID não informado");
+
+            return new ResponseEntity<>(retorno, HttpStatus.BAD_REQUEST);
+        } else if (repository.existsById(produto.getId())) {
+            if (produto.getNome() == null || produto.getNome().isEmpty()) {
+                retorno.setMensagem("Insira um nome ao produto.");
+                return ResponseEntity.badRequest().body(retorno);
+            }
+            if (produto.getPrecoMetroCubicos() == null || produto.getPrecoMetroCubicos().isNaN()) {
+                retorno.setMensagem("Insira o preço por metro cúbico do produto.");
+                return ResponseEntity.badRequest().body(retorno);
+            }
+            if (produto.getQuantidadePregos() == null || produto.getQuantidadePregos() < 0) {
+                retorno.setMensagem("Insira a quantidade de pregos do produto.");
+                return ResponseEntity.badRequest().body(retorno);
+            }
+            cadastrarProduto(produto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        retorno.setMensagem("ID não existente");
+        return new ResponseEntity<>(retorno, HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -49,7 +82,7 @@ public class ProdutoService implements IProdutoService {
     }
 
     @Override
-    public ResponseEntity<?> ListarPorId(Long id) {
+    public ResponseEntity<?> listarPorId(Long id) {
         if (id == null) {
             retorno.setMensagem("ID não informado");
 
