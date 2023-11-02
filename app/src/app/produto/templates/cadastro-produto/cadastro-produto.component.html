@@ -1,0 +1,40 @@
+<form #clienteForm="ngForm">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="produto.nome" name="nome" class="form-control" id="floatingInput"
+          placeholder="Nome">
+        <label for="floatingInput">Nome</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="produto.custoMadeiraPorMetroCubico" name="custoMadeiro" class="form-control" id="floatingInput"
+          placeholder="Custo Madeiro por Metro³">
+        <label for="floatingInput" class="form-label">Custo Madeiro por Metro³ome</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="form-floating mb-3">
+        <input type="text" [(ngModel)]="produto.quantidadePregoPorMetroCubico" name="custoPrego" class="form-control" id="floatingInput"
+          placeholder="Custo Prego por Metro³">
+        <label for="floatingInput" class="form-label">Custo Prego por Metro³</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-1">
+    <div class="col-6">
+      <button class="btn btn-success w-100" type="submit" (click)="onSubmit()">
+        <i class="fa fa-save"></i>
+        Cadastrar
+      </button>
+    </div>
+  </div>
+</form>
