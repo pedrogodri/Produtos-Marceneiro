@@ -8,6 +8,4 @@ import com.br.marceneiro.api.models.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    @Query("SELECT p FROM Produto p WHERE p.id = :id")
-    Produto findByProdutoId(Long id);
 }

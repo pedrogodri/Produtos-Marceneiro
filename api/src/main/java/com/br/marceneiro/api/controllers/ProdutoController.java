@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.util.List;
 import com.br.marceneiro.api.controllers.interfaces.IProdutoController;
 import com.br.marceneiro.api.models.Produto;
 import com.br.marceneiro.api.services.ProdutoService;
@@ -19,39 +19,55 @@ import com.br.marceneiro.api.services.ProdutoService;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/produtos")
-public class ProdutoController implements IProdutoController {
+public class ProdutoController {
 
-    @Autowired
-    ProdutoService service;
+    private final ProdutoService produtoService;
 
-    @Override
-    @PostMapping
-    public ResponseEntity<?> cadastrarProduto(@RequestBody Produto produto) {
-        return service.cadastrarProduto(produto);
+    public ProdutoController(ProdutoService produtoService) {
+        this.produtoService = produtoService;
     }
-    
-    @Override
-    @PutMapping
-    public ResponseEntity<?> alterarProduto(@RequestBody Produto produto) {
-       return service.alterarProduto(produto);
-    }
-    
-    @Override
+
     @GetMapping
-    public ResponseEntity<?> listarProdutos() {
-        return service.listarProdutos();
+    public List<Produto> listarMateriais() {
+        return produtoService.listarMateriais();
     }
 
-    @Override
-    @GetMapping("{id}")
-    public ResponseEntity<?> selecionarioPorId(@PathVariable Long id) {
-        return service.listarPorId(id);
+    @PostMapping
+    public Produto criarMaterial(@RequestBody Produto produto) {
+        return produtoService.criarMaterial(produto);
     }
 
-    @Override
-    @DeleteMapping("{id}")
-    public ResponseEntity<?> deletarProduto(@PathVariable Long id) {
-        return service.deletarProduto(id);
-    }
+    // @Autowired
+    // ProdutoService service;
+
+    // @Override
+    // @PostMapping
+    // public ResponseEntity<?> cadastrarProduto(@RequestBody Produto produto) {
+    //     return service.cadastrarProduto(produto);
+    // }
+    
+    // @Override
+    // @PutMapping
+    // public ResponseEntity<?> alterarProduto(@RequestBody Produto produto) {
+    //    return service.alterarProduto(produto);
+    // }
+    
+    // @Override
+    // @GetMapping
+    // public ResponseEntity<?> listarProdutos() {
+    //     return service.listarProdutos();
+    // }
+
+    // @Override
+    // @GetMapping("{id}")
+    // public ResponseEntity<?> selecionarioPorId(@PathVariable Long id) {
+    //     return service.listarPorId(id);
+    // }
+
+    // @Override
+    // @DeleteMapping("{id}")
+    // public ResponseEntity<?> deletarProduto(@PathVariable Long id) {
+    //     return service.deletarProduto(id);
+    // }
     
 }

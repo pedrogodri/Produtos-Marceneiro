@@ -18,6 +18,7 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Integer quantidadePregos;
-    private Double precoMetroCubicos;
+    private Double custoMadeiraPorMetroCubico;
+    private Double quantidadePregoPorMetroCubico;
+    
 }
