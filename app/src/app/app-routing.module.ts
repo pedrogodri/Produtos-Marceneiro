@@ -6,6 +6,7 @@ import { ListaProjetoComponent } from './projeto/templates/lista-projeto/lista-p
 import { CadastroProjetoComponent } from './projeto/templates/cadastro-projeto/cadastro-projeto.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'lista-projeto', pathMatch: 'full' },
   { path: 'lista-produto', component: ListaProdutoComponent },
   { path: 'cadastro-produto', component: CadastroProdutoComponent },
   { path: 'lista-projeto', component: ListaProjetoComponent },
