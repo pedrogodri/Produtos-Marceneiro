@@ -21,11 +21,11 @@ public class ProdutoService {
         this.produtoRepository = materialRepository;
     }
 
-    public List<Produto> listarMateriais() {
+    public List<Produto> listarProdutos() {
         return produtoRepository.findAll();
     }
 
-    public Produto criarMaterial(Produto material) {
+    public Produto criarProduto(Produto material) {
         return produtoRepository.save(material);
     }
     // @Autowired

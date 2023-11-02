@@ -29,12 +29,12 @@ public class ProdutoController {
 
     @GetMapping
     public List<Produto> listarMateriais() {
-        return produtoService.listarMateriais();
+        return produtoService.listarProdutos();
     }
 
     @PostMapping
     public Produto criarMaterial(@RequestBody Produto produto) {
-        return produtoService.criarMaterial(produto);
+        return produtoService.criarProduto(produto);
     }
 
     // @Autowired
