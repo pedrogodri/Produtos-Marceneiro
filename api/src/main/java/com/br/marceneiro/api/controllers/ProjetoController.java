@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+
+import com.br.marceneiro.api.models.Produto;
 import com.br.marceneiro.api.models.Projeto;
 import com.br.marceneiro.api.services.ProjetoService;
 
@@ -27,6 +29,11 @@ public class ProjetoController {
     public Projeto criarProjeto(@RequestBody Projeto projeto) {
         projeto.calcularCustoTotal();
         return projetoService.criarProjeto(projeto);
+    }
+
+    @GetMapping
+    public List<Projeto> listarProjetos() {
+        return projetoService.listarProjetos();
     }
     // @Autowired
     // public ProjetoService service;

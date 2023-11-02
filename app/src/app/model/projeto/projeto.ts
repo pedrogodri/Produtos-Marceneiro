@@ -3,7 +3,7 @@ import { Produto } from "../produto/produto";
 export class Projeto {
   id?: number;
   nome?: string;
-  quantidadeMetrosCubicos: number = 0;
+  quantidadeMetrosCubicos?: number;
   produto: Produto = new Produto();
   custoTotal?: number;
 
