@@ -19,6 +19,6 @@ public class Produto {
     private Long id;
     private String nome;
     private Double custoMadeiraPorMetroCubico;
-    private Double quantidadePregoPorMetroCubico;
+    private Integer quantidadePregoPorMetroCubico;
     
 }

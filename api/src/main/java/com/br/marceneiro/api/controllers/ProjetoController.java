@@ -35,38 +35,15 @@ public class ProjetoController {
     public List<Projeto> listarProjetos() {
         return projetoService.listarProjetos();
     }
-    // @Autowired
-    // public ProjetoService service;
 
+    @PostMapping("/{id}/subprojetos")
+    public Projeto criarSubprojeto(@PathVariable Long id, @RequestBody Projeto subprojeto) {
+        subprojeto.calcularCustoTotal();
+        return projetoService.adicionarSubprojeto(id, subprojeto);
+    }
 
-    // @PostMapping
-    // public Projeto criarProjeto(@RequestBody Projeto projeto) {
-    //     return service.criarProjeto(projeto);
-    // }
-
-    // @GetMapping("/{id}")
-    // public Projeto getProjetoPorId(@PathVariable Long id) {
-    //     return service.getProjetoPorId(id);
-    // }
-
-    // @PutMapping("/{id}")
-    // public Projeto atualizarProjeto(@PathVariable Long id, @RequestBody Projeto projeto) {
-    //     return service.atualizarProjeto(id, projeto);
-    // }
-
-    // @DeleteMapping("/{id}")
-    // public void deletarProjeto(@PathVariable Long id) {
-    //     service.deletarProjeto(id);
-    // }
-
-    // @GetMapping("/{id}/calcular-custo")
-    // public double calcularCustoDoProjeto(@PathVariable Long id) {
-    //     return service.calcularCustoDoProjeto(id);
-    // }
-
-    // @Override
-    // @GetMapping
-    // public ResponseEntity<?> listarProjetos() {
-    //     return service.listarProjetos();
-    // }
+    @GetMapping("/{id}/subprojetos")
+    public List<Projeto> listarSubprojetos(@PathVariable Long id) {
+        return projetoService.listarSubprojetos(id);
+    }
 }
