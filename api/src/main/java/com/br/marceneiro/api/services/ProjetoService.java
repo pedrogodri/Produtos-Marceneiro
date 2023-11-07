@@ -23,7 +23,7 @@ public class ProjetoService {
         return projetoRepository.findAll();
     }
 
-    public Optional<Projeto> encontrarProjetoPorId(Long id) {
+    public Optional<Projeto> findProjetoById(Long id) {
         return projetoRepository.findById(id);
     }
 
@@ -53,13 +53,15 @@ public class ProjetoService {
             }
             subprojeto.calcularCustoTotal();
             projetoPai.getSubprojetos().add(subprojeto);
-            projetoPai.calcularCustoTotal();
+            projetoPai.setCustoTotal(projetoPai.getCustoTotal() + subprojeto.getCustoTotal());
+    
             projetoRepository.save(projetoPai);
             return subprojeto;
         } else {
             throw new IllegalArgumentException("Projeto pai não encontrado");
         }
     }
+    
 
     public List<Projeto> listarSubprojetos(Long idProjeto) {
         Optional<Projeto> projetoOptional = projetoRepository.findById(idProjeto);
