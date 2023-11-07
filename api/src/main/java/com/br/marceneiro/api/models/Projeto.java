@@ -35,15 +35,8 @@ public class Projeto {
     private List<Projeto> subprojetos;
 
     public void calcularCustoTotal() {
-        double custoSubprojetos = 0;
-
-        if (this.subprojetos != null) {
-            for (Projeto subprojeto : this.subprojetos) {
-                subprojeto.calcularCustoTotal();
-                custoSubprojetos += subprojeto.getCustoTotal();
-            }
+        if (this.produto != null) {
+            this.custoTotal = this.quantidadeMetrosCubicos * (this.produto.getCustoMadeiraPorMetroCubico() + this.produto.getQuantidadePregoPorMetroCubico());
         }
-
-        this.custoTotal = this.quantidadeMetrosCubicos * (this.produto.getCustoMadeiraPorMetroCubico() + this.produto.getQuantidadePregoPorMetroCubico()) + custoSubprojetos;
     }
 }

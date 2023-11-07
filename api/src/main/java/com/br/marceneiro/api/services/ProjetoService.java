@@ -53,6 +53,7 @@ public class ProjetoService {
             }
             subprojeto.calcularCustoTotal();
             projetoPai.getSubprojetos().add(subprojeto);
+            projetoPai.calcularCustoTotal();
             projetoRepository.save(projetoPai);
             return subprojeto;
         } else {
