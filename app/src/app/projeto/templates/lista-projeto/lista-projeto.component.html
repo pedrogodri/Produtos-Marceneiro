@@ -17,8 +17,8 @@
           <tr>
             <td class="col columns-list">*</td>
             <td class="col columns-list">Nome</td>
-            <td class="col columns-list">Custo por metro cúbico</td>
-            <td class="col columns-list">Quantidade de prego por metro cúbico</td>
+            <td class="col columns-list">Quantidade Metros³</td>
+            <td class="col columns-list">Nome Produto</td>
             <td class="col columns-list">Custo Total</td>
             <td class="col columns-list">Ações</td>
           </tr>
@@ -28,9 +28,12 @@
             <td class="line-list"> {{projeto.id}} </td>
             <td class="line-list"> {{projeto.nome}} </td>
             <td class="line-list"> {{projeto.quantidadeMetrosCubicos}} </td>
-            <td class="line-list"> {{projeto.produto.nome}} </td>
+            <td class="line-list"> {{projeto.produto?.nome}} </td>
             <td class="line-list"> {{projeto.custoTotal | currency:'BRL':'symbol':'1.2-2'}} </td>
-            <td class="d-flex justify-content-end line-list">
+            <td class="d-flex line-list">
+              <button type="button" class="btn btn-success mx-4 px-4" (click)="addSubprojeto(projeto.id)">
+                <i class="fa-solid fa-plus"></i>
+              </button>
               <button type="button" class="btn btn-primary mx-4 px-4">
                 <i class="fa-solid fa-circle-info"></i>
               </button>

@@ -25,4 +25,9 @@ export class ListaProjetoComponent implements OnInit {
   novoCadastroProjeto(): void {
     this.router.navigate(['cadastro-projeto'])
   }
+
+  addSubprojeto(id: number): void {
+    this.service.setProjetoId(id);
+    this.router.navigate([`cadastro-subprojeto/${id}`]);
+  }
 }

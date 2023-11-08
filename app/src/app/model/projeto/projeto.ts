@@ -1,15 +1,10 @@
 import { Produto } from "../produto/produto";
 
 export class Projeto {
-  id?: number;
+  id: number = 0;
   nome?: string;
   quantidadeMetrosCubicos?: number;
-  produto: Produto = new Produto();
+  produto?: Produto;
+  subprojetos?: Projeto[];
   custoTotal?: number;
-
-  // public calcularCustoTotal(): void {
-  //   if (this.produto !== null) {
-  //     this.custoTotal = this.quantidadeMetrosCubicos * (this.produto.custoMadeiraPorMetroCubico + this.produto.quantidadePregoPorMetroCubico);
-  //   }
-  // }
 }

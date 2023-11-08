@@ -1,0 +1,45 @@
+<form #pecaForm="ngForm">
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="form-floating mb-3">
+        <input class="form-control" id="floatingInput" type="text"
+          placeholder="Nome" name="Nome" [(ngModel)]="projeto.nome">
+        <label for="floatingInput" class="form-label">Nome</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="form-floating mb-3">
+        <input class="form-control" id="floatingInput" type="text"
+          placeholder="Descrição" name="Quantidade Metros³"
+          [(ngModel)]="projeto.quantidadeMetrosCubicos">
+        <label for="floatingInput" class="form-label">Quantidade Metros³</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="form-floating mb-3">
+        <select class="form-control" [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="projeto.produto">
+          <option *ngFor="let produto of produtos" [ngValue]="produto">
+            {{ produto.nome }}
+          </option>
+        </select>
+        <label for="floatingInput">Produto</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-3">
+    <div class="col-6">
+      <button class="btn btn-success w-100" type="submit" (click)="onSubmit()">
+        CADASTRAR
+      </button>
+    </div>
+  </div>
+</form>
